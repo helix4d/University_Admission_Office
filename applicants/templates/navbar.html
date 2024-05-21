@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">На главную</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Статистика
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'stat-index' %}">За весь период</a></li>
+            <li><a class="dropdown-item" href="{% url 'stat-days' %}">По дням</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="{% url 'applicant_create' %}">Принять документы</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Списки
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" href="{% url 'applicants' %}">Абитуриенты ХТУ
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'applicants_list_by_specialisations' %}">
+              Списки абитурьентов по специальностям
+              </a>
+            </li>
+          </ul>
+        </li>
+        {% for group in request.user.groups.all %}
+            {% if group.name == 'Администраторы' %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'exports' %}">Экспорт данных</a></li>
+            {% endif %}
+            {% endfor %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Выход</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

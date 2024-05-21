@@ -1,0 +1,93 @@
+<table class="table table-striped p=3 m=3 w-auto small">
+    <tr>
+        <td>id</td>
+        <td>{{ applicant.id }}</td>
+    </tr>
+    <tr>
+        <td>
+            Ф.И.О.
+        </td>
+        <td>
+            {{ applicant.last_name }} {{ applicant.middle_name }} {{ applicant.first_name }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Форма обученя
+        </td>
+        <td>
+            {{ applicant.education_form }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Специальность
+        </td>
+        <td>
+            {{ applicant.specialization }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Телефон
+        </td>
+        <td>
+            {{ applicant.phone }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            email
+        </td>
+        <td>
+            {{ applicant.email }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Адрес
+        </td>
+        <td>
+            {{ applicant.address }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Общежитие
+        </td>
+        <td>
+            {% if applicant.hostel %}
+            нужно
+            {% else %}
+            ненужно
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td>Льготы</td>
+        <td>{{ applicant.benefits }}</td>
+    </tr>
+    <tr>
+        <td>Документ об образовании</td>
+        <td>{{ applicant.education_doc }}</td>
+    </tr>
+    <tr>
+        <td>Паспорт</td>
+        <td>{{ applicant.passport }}</td>
+    </tr>
+    <tr>
+        <td>Идентификационный код</td>
+        <td>{{ applicant.ic }}</td>
+    </tr>
+    <tr>
+        <td>Дата</td>
+        <td>{{ applicant.created | date:'d.m.y H:i:s'}}</td>
+    </tr>
+    <tr>
+        <td>Изменения</td>
+        <td>{{ applicant.changed | date:'d.m.y H:i:s'}}</td>
+</table>
+
+<a class="btn btn-primary btn-sm" href="{% url 'applicant_edit' applicant.id %}" role="button">Изменить</a>
+<a class="btn btn-danger btn-sm" href="{% url 'applicant_delete' applicant.id %}" role="button">Удалить</a>
+

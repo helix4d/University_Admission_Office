@@ -1,0 +1,73 @@
+<table class="table table-striped p=3 m=3 w-auto small">
+    <tr>
+        <td>id</td>
+        <td>{{ student.id }}</td>
+    </tr>
+    <tr>
+        <td>
+            Ф.И.О.
+        </td>
+        <td>
+            {{ student.last_name }} {{ student.middle_name }} {{ student.first_name }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Телефон
+        </td>
+        <td>
+            {{ student.phone }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            email
+        </td>
+        <td>
+            {{ student.email }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Курс
+        </td>
+        <td>
+            {{ student.curs }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Группа
+        </td>
+        <td>
+            {{ student.group }}
+        </td>
+    </tr>
+    <tr>
+        <td>Образовательная программа</td>
+        <td>{{ student.group }}</td>
+    </tr>
+    <tr>
+        <td>Уровень обучения</td>
+        <td>{{ student.level }}</td>
+    </tr>
+    <tr>
+        <td>Форма обучения</td>
+        <td>{{ student.education_form }}</td>
+    </tr>
+    <tr>
+        <td>Специальность</td>
+        <td>{{ student.specialization }}</td>
+    </tr>
+    <tr>
+        <td>Дата</td>
+        <td>{{ student.created | date:'d.m.y H:i:s'}}</td>
+    </tr>
+    <tr>
+        <td>Изменения</td>
+        <td>{{ student.changed | date:'d.m.y H:i:s'}}</td>
+</table>
+
+<a class="btn btn-primary btn-sm" href="{% url 'student_edit' student.id %}" role="button">Изменить</a>
+<a class="btn btn-danger btn-sm" href="{% url 'student_delete' student.id %}" role="button">Удалить</a>
+

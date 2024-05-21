@@ -1,0 +1,55 @@
+{% include "head.html" %}
+<body>
+{% if user.is_authenticated %}
+
+{% include "header.html" %}
+{% include "navbar.html" %}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 48rem;">
+        <div class="card-body mb=10">
+            <h5 class="card-title text-center">
+               Данные студента ХТУ
+            </h5>
+            <div class="card-text">
+                 <form method="post" action="{% url 'student_edit_save' id %}">
+                    {% csrf_token %}
+            <table class="table table-striped">
+                {% for field in form %}
+                <tr>
+                    <td>
+                        {{ field.label_tag }} <br>
+                        {{ field }}
+                    </td>
+                </tr>
+
+        {% endfor %}
+            </table>
+            <br>
+                   <button type="submit" class="btn btn-primary text-alight-right">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+{% include "bottom_nav.html" %}
+{% else %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% include "footer.html" %}

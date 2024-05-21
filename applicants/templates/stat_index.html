@@ -1,0 +1,40 @@
+{% include "head.html" %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% include "navbar.html" %}
+<br>
+
+<div class="d-flex flex-wrap justify-content-center">
+    <div class="card shadow p-2 m-2 b-5 bg-white rounded" style="width: 36rem;">
+        <div class="card-header">
+            <h5>
+                Статистика вступительной кампании ХТУ-2023
+            </h5>
+        </div>
+        <div class="card-body">
+            <a class="nav-link" href="{% url 'stat-all' %}">Общая статистика</a>
+            <a class="nav-link" href="{% url 'stat-days' %}">Cтатистика по дням</a>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+{% include "bottom_nav.html" %}
+{% else %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% include "footer.html" %}

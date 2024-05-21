@@ -1,0 +1,34 @@
+[
+  {
+    "model": "applicant_db.ApplicantAcademy",
+    "pk": 1,
+    "fields": {
+      "first_name": "Юрий",
+      "middle_name": "Петрович",
+      "last_name": "Иванов",
+      "phone": "+79900013259",
+      "email": "urchik2020@gmail.com",
+      "address": "Ул. 40 лет Октября, д.4, кв.34",
+      "education_form": 1,
+      "hostel": "no",
+      "benefits": "сирота",
+      "specialization": 1
+    }
+  },
+  {
+    "model": "applicant_db.ApplicantAcademy",
+    "pk": 2,
+    "fields": {
+      "first_name": "Сидор",
+      "middle_name": "Юрьевич",
+      "last_name": "Петров",
+      "phone": "+79900013234",
+      "email": "urchik2020@gmail.com",
+      "address": "ул. 200 лет Херсона, д.14, кв.4",
+      "education_form": 1,
+      "hostel": "yes",
+      "benefits": "",
+      "specialization": 2
+    }
+  }
+]

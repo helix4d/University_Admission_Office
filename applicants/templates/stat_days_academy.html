@@ -1,0 +1,65 @@
+{% include "head.html" %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% include "navbar.html" %}
+<br>
+
+<div class="d-flex flex-wrap justify-content-center">
+    <div class="card shadow p-2 m-2 b-5 bg-white rounded" style="width: 48rem;">
+        <div class="card-header">
+            <h5>
+                Статистика вступительной кампании ХГМА-2022 по дням работы приемной комиссии
+            </h5>
+        </div>
+        <div class="card-body">
+            {% for key, value in data.items %}
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                  <th scope="col" class="fw-light">Подразделение</th>
+                  <th scope="col" class="fw-light">Абитуриенты</th>
+                  <th scope="col" class="fw-light">Учащиеся</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td colspan="3">{{ key }}</td>
+                </tr>
+                <tr>
+                    <td>Академия</td>
+                    <td> {{ value.academy.applicants }}</td>
+                    <td> {{ value.academy.students }}</td>
+                </tr>
+                {% for key2, value2 in value.academy.specialisations.items %}
+                <tr>
+                    <td>{{ key2 }}</td>
+                    <td>{{ value2.applicant }}</td>
+                    <td>{{ value2.student }}</td>
+                </tr>
+                 {% endfor %}
+           </table>
+              {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+{% include "bottom_nav.html" %}
+{% else %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% include "footer.html" %}

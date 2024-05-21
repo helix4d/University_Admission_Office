@@ -1,0 +1,14 @@
+[Unit]
+Description=KSMA
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/mk/app/applicant_2022/
+ExecStart=/home/mk/app/venv/bin/python3 /home/mk/app/applicant_2022/manage.py runserver 0.0.0.0:8000
+KillMode=process
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

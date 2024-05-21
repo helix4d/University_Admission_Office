@@ -1,0 +1,75 @@
+{% include "head.html" %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% include "navbar.html" %}
+<br>
+<div class="d-flex flex-wrap justify-content-center">
+    <div class="card shadow p-2 m-2 mb-5 bg-white rounded" style="width: 48rem;">
+        <div class="card-header">
+            <h5>
+            </h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Абитуриенты</th>
+                  <th scope="col">Студенты</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Херсонский технический университет</td>
+                  <td>{{ applicants }}</td>
+                  <td>{{ students }}</td>
+                </tr>
+                <tr>
+                  <td>Очная форма обучения</td>
+                  <td>{{ applicants_college }}</td>
+                  <td>{{ students_college }}</td>
+                </tr>
+                <tr>
+                  <td>Заочная форма обучения</td>
+                  <td>{{ applicants_lycee }}</td>
+                  <td>{{ students_lycee }}</td>
+                </tr>
+              <tr>
+                  <td>Нуждаются в общежитии</td>
+                  <td>{{ applicants_lycee }}</td>
+                  <td>{{ students_lycee }}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <div class="clearfix">
+                <div class="float-start">
+                    Общий контингент:
+                </div>
+                <div class="float-end">
+                    <b>{{ all_contingent }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% include "bottom_nav.html" %}
+{% else %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% include "footer.html" %}

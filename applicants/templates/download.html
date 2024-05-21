@@ -1,0 +1,46 @@
+{% include "head.html" %}
+<body>
+{% if user.is_authenticated %}
+
+{% include "header.html" %}
+{% include "navbar.html" %}
+<br>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="card m-3" style="width: 36rem;">
+        <div class="card-header">
+            Экспорт данных из базы
+        </div>
+        <div class="card-body">
+            {% for group in request.user.groups.all %}
+            {% if group.name == 'Администраторы' %}
+            {% for file in list_of_files %}
+            <p class="card-text">
+                <a href="/files/{{ file }}">{{ file }}</a>
+            </p>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+{% include "bottom_nav.html" %}
+{% else %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% include "footer.html" %}

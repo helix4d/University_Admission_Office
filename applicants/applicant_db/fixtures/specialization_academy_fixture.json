@@ -1,0 +1,24 @@
+[
+  {
+    "model": "applicant_db.SpecializationAcademy",
+    "pk": 1,
+    "fields": {
+      "specialization_name": "Петрович"
+    }
+  },
+  {
+    "model": "applicant_db.SpecializationAcademy",
+    "pk": 2,
+    "fields": {
+      "specialization_name": "Петрович"
+    }
+  },
+  {
+    "model": "applicant_db.SpecializationAcademy",
+    "pk": 3,
+    "fields": {
+      "specialization_name": "Петрович"
+    }
+  }
+
+]

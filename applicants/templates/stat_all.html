@@ -1,0 +1,74 @@
+{% include "head.html" %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% include "navbar.html" %}
+<br>
+
+<div class="d-flex flex-wrap justify-content-center">
+    <div class="card shadow p-2 m-2 b-5 bg-white rounded" style="width: 64rem;">
+        <div class="card-header">
+            <h5>
+                Статистика вступительной кампании ХТУ-2023 за все время работы
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col" class="fw-light"></th>
+                  <th scope="col" class="fw-light">Абитуриенты</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                      <b>Херсонский технический университет</b>
+                  </td>
+                  <td>{{ applicants }}</td>
+                </tr>
+                {% for key, value in specialisations.items %}
+                <tr>
+                  <td>&nbsp&nbsp&nbsp{{ key }}</td>
+                  <td>{{ value.applicant }}</td>
+                </tr>
+                {% endfor %}
+                {% for key, value in forms.items %}
+                <tr>
+                  <td>&nbsp&nbsp&nbsp{{ key }}</td>
+                  <td>{{ value.applicant }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                  <td>&nbsp&nbsp&nbspНуждаются в общежитии</td>
+                  <td>{{ hostel_applicants }}</td>
+                </tr>
+                <tr>
+                  <td>&nbsp&nbsp&nbspОбщий контингент:</td>
+                  <td colspan="2"><b>{{ all }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+    </div>
+</div>
+</div>
+<br>
+<br>
+<br>
+
+{% include "bottom_nav.html" %}
+{% else %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% include "footer.html" %}

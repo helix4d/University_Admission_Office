@@ -1,0 +1,29 @@
+{% include "head.html" %}
+<body>
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% include "navbar.html" %}
+<div class="card shadow p-3 m-3 bg-white rounded">
+    <h5 class="card-title text-center">
+               Студенты ХТУ <span class="badge bg-secondary">{{ count }}</span>
+    </h5>
+    {% include "students_list.html" %}
+</div>
+{% else %}
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Вход в систему</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Вы не вошли в систему приемной комиссии
+            </h6>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Вход</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% include "footer.html" %}
